@@ -2,6 +2,7 @@
 import BoardView from "@/components/BoardView";
 import ListView from "@/components/ListView";
 import ProjectHeader from "@/components/ProjectHeader";
+import TimelineView from "@/components/TimelineView";
 import React, { useState } from "react";
 
 type Props = {
@@ -17,12 +18,15 @@ const Projects = ({ params }: Props) => {
   return (
     <div className="">
       {/* Modal */}
-      <ProjectHeader activeTab={activeTab} setActiveTab={setActiveTab} />\
+      <ProjectHeader activeTab={activeTab} setActiveTab={setActiveTab} />
       {activeTab === "Board" && (
         <BoardView id={id} setShowCreateTaskModal={setShowCreateTaskModal} />
       )}
       {activeTab === "List" && (
         <ListView id={id} setShowCreateTaskModal={setShowCreateTaskModal} />
+      )}
+      {activeTab === "Timeline" && (
+        <TimelineView id={id} setShowCreateTaskModal={setShowCreateTaskModal} />
       )}
     </div>
   );
