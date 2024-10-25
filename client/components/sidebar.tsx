@@ -93,7 +93,7 @@ const Sidebar = () => {
         </div>
         {/* TEAM */}
         <div className="flex items-center gap-5 border-y-[1.5px] border-gray-200 px-8 py-4 dark:border-gray-700">
-          <Image src="/logo.png" width={40} height={40} alt="logo" />
+          <Image src="/logo.webp" width={40} height={40} alt="logo" />
           <div className="">
             <h3 className="text-md font-bold tracking-wide dark:text-gray-200">
               My Team
