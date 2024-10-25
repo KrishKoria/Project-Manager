@@ -1,4 +1,5 @@
 "use client";
+import BoardView from "@/components/BoardView";
 import ProjectHeader from "@/components/ProjectHeader";
 import React, { useState } from "react";
 
@@ -16,7 +17,9 @@ const Projects = ({ params }: Props) => {
     <div className="">
       {/* Modal */}
       <ProjectHeader activeTab={activeTab} setActiveTab={setActiveTab} />\
-      {/* {activeTab === "Boards" && <Boards projectId={id} />} */}
+      {activeTab === "Board" && (
+        <BoardView id={id} setShowCreateTaskModal={setShowCreateTaskModal} />
+      )}
     </div>
   );
 };
