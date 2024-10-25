@@ -9,12 +9,12 @@ import Image from "next/image";
 
 type BoardProps = {
   id: string;
-  setIsModalNewTaskOpen: (isOpen: boolean) => void;
+  setShowCreateTaskModal: (isOpen: boolean) => void;
 };
 
 const taskStatus = ["To Do", "Work In Progress", "Under Review", "Completed"];
 
-const BoardView = ({ id, setIsModalNewTaskOpen }: BoardProps) => {
+const BoardView = ({ id, setShowCreateTaskModal }: BoardProps) => {
   const {
     data: tasks,
     isLoading,
@@ -38,7 +38,7 @@ const BoardView = ({ id, setIsModalNewTaskOpen }: BoardProps) => {
             status={status}
             tasks={tasks || []}
             moveTask={moveTask}
-            setIsModalNewTaskOpen={setIsModalNewTaskOpen}
+            setShowCreateTaskModal={setShowCreateTaskModal}
           />
         ))}
       </div>
@@ -50,14 +50,14 @@ type TaskColumnProps = {
   status: string;
   tasks: TaskType[];
   moveTask: (taskId: number, toStatus: string) => void;
-  setIsModalNewTaskOpen: (isOpen: boolean) => void;
+  setShowCreateTaskModal: (isOpen: boolean) => void;
 };
 
 const TaskColumn = ({
   status,
   tasks,
   moveTask,
-  setIsModalNewTaskOpen,
+  setShowCreateTaskModal,
 }: TaskColumnProps) => {
   const [{ isOver }, drop] = useDrop(() => ({
     accept: "task",
@@ -104,7 +104,7 @@ const TaskColumn = ({
             </button>
             <button
               className="flex h-6 w-6 items-center justify-center rounded bg-gray-200 dark:bg-dark-tertiary dark:text-white"
-              onClick={() => setIsModalNewTaskOpen(true)}
+              onClick={() => setShowCreateTaskModal(true)}
             >
               <Plus size={16} />
             </button>
