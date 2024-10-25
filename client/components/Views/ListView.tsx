@@ -1,7 +1,7 @@
 import { Task, useGetTasksQuery } from "@/lib/api";
 import React from "react";
-import Header from "./Header";
-import TaskCard from "./TaskCard";
+import Header from "../Header";
+import TaskCard from "../TaskCard";
 
 type Props = {
   id: string;
@@ -15,7 +15,7 @@ const ListView = ({ id, setShowCreateTaskModal }: Props) => {
     error,
   } = useGetTasksQuery({ projectId: Number(id) });
   if (isLoading) return <div>Loading...</div>;
-  if (error) return <div>An error occurred while fetching tasks</div>;
+  if (error || !tasks) return <div>An error occurred while fetching tasks</div>;
   return (
     <div className="px-4 pb-8 xl:px-6">
       <div className="pt-5">

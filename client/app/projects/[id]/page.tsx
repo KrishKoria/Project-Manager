@@ -1,9 +1,10 @@
 "use client";
-import BoardView from "@/components/BoardView";
-import ListView from "@/components/ListView";
+import BoardView from "@/components/Views/BoardView";
+import ListView from "@/components/Views/ListView";
 import ProjectHeader from "@/components/ProjectHeader";
-import TimelineView from "@/components/TimelineView";
+import TimelineView from "@/components/Views/TimelineView";
 import React, { useState } from "react";
+import TableView from "@/components/Views/TableView";
 
 type Props = {
   params: {
@@ -27,6 +28,9 @@ const Projects = ({ params }: Props) => {
       )}
       {activeTab === "Timeline" && (
         <TimelineView id={id} setShowCreateTaskModal={setShowCreateTaskModal} />
+      )}
+      {activeTab === "Table" && (
+        <TableView id={id} setShowCreateTaskModal={setShowCreateTaskModal} />
       )}
     </div>
   );

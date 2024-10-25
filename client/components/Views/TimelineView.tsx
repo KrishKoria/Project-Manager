@@ -34,7 +34,7 @@ const TimelineView = ({ id, setShowCreateTaskModal }: Props) => {
   }, [tasks]);
 
   if (isLoading) return <div>Loading...</div>;
-  if (error) return <div>An error occurred while fetching tasks</div>;
+  if (error || !tasks) return <div>An error occurred while fetching tasks</div>;
 
   const handleViewModeChange = (
     event: React.ChangeEvent<HTMLSelectElement>,
