@@ -5,6 +5,7 @@ import ProjectHeader from "@/components/ProjectHeader";
 import TimelineView from "@/components/Views/TimelineView";
 import React, { useState } from "react";
 import TableView from "@/components/Views/TableView";
+import NewTaskModel from "@/components/NewTaskModel";
 
 type Props = {
   params: {
@@ -18,7 +19,11 @@ const Projects = ({ params }: Props) => {
   const [showCreateTaskModal, setShowCreateTaskModal] = useState(false);
   return (
     <div className="">
-      {/* Modal */}
+      <NewTaskModel
+        isOpen={showCreateTaskModal}
+        onClose={() => setShowCreateTaskModal(false)}
+        id={Number(id)}
+      />
       <ProjectHeader activeTab={activeTab} setActiveTab={setActiveTab} />
       {activeTab === "Board" && (
         <BoardView id={id} setShowCreateTaskModal={setShowCreateTaskModal} />

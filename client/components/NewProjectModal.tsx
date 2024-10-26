@@ -25,12 +25,14 @@ const NewProjectModal = ({ isOpen, onClose }: Props) => {
       representation: "complete",
     });
 
-    await createProject({
+    const res = await createProject({
       name: projectName,
       description,
       startDate: formattedStartDate,
       endDate: formattedEndDate,
     });
+
+    window.location.href = `/projects/${res.data?.id}`;
   };
 
   const isFormValid = () => {
