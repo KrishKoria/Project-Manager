@@ -1,7 +1,7 @@
 import { Task, useGetTasksQuery } from "@/lib/api";
 import React from "react";
 import Header from "../Header";
-import TaskCard from "../TaskCard";
+import TaskCard from "../cards/TaskCard";
 
 type Props = {
   id: string;
