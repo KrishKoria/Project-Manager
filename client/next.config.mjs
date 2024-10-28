@@ -3,9 +3,9 @@ const nextConfig = {
   images: {
     remotePatterns: [
       {
-        protocol: "http",
-        hostname: "localhost",
-        port: "3000",
+        protocol: "https",
+        hostname: "pm-s3-bucket-1.s3.ap-south-1.amazonaws.com",
+        pathname: "/**",
       },
     ],
   },
