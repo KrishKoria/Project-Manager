@@ -35,11 +35,6 @@ const SidebarLink = ({ href, icon: Icon, label }: SidebarLinksProps) => {
   const pathname = usePathname();
   const isActive =
     pathname === href || (pathname === "/" && href === "/dashboard");
-  const screenWidth = window.innerWidth;
-  const dispatch = useAppDispatch();
-  const isSidebarCollapsed = useAppSelector(
-    (state) => state.global.isSidebarCollapsed,
-  );
   return (
     <Link href={href} className="w-full">
       <div
@@ -60,7 +55,6 @@ const SidebarLink = ({ href, icon: Icon, label }: SidebarLinksProps) => {
 };
 
 const Sidebar = () => {
-  const [isOpen, setIsOpen] = useState(false);
   const [showProjects, setShowProjects] = useState(true);
   const [showPriority, setShowPriority] = useState(true);
   const { data: projects } = useGetProjectsQuery();
