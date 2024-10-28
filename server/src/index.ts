@@ -1,6 +1,6 @@
 import bodyParser from "body-parser";
 import dotenv from "dotenv";
-import express from "express";
+import express, { Request, Response } from "express";
 import helmet from "helmet";
 import morgan from "morgan";
 import cors from "cors";
