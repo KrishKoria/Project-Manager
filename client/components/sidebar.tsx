@@ -10,7 +10,6 @@ import {
   ChevronDownIcon,
   ChevronUpIcon,
   Home,
-  Icon,
   Layers3,
   LockIcon,
   LucideIcon,
@@ -20,7 +19,6 @@ import {
   User,
   Users,
   X,
-  XIcon,
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -141,7 +139,7 @@ const Sidebar = () => {
           onClick={() => setShowPriority((prev) => !prev)}
           className="flex w-full items-center justify-between px-8 py-3 text-gray-500"
         >
-          <span>Priorty</span>
+          <span>Priority</span>
           {showPriority ? (
             <ChevronUpIcon className="h-5 w-5" />
           ) : (
@@ -153,19 +151,23 @@ const Sidebar = () => {
             <SidebarLink
               icon={AlertCircle}
               label="Urgent"
-              href="/priorty/urgent"
+              href="/priority/urgent"
             />
-            <SidebarLink icon={ShieldAlert} label="High" href="/priorty/high" />
+            <SidebarLink
+              icon={ShieldAlert}
+              label="High"
+              href="/priority/high"
+            />
             <SidebarLink
               icon={AlertTriangle}
               label="Medium"
-              href="/priorty/medium"
+              href="/priority/medium"
             />
-            <SidebarLink icon={AlertOctagon} label="Low" href="/priorty/low" />
+            <SidebarLink icon={AlertOctagon} label="Low" href="/priority/low" />
             <SidebarLink
               icon={Layers3}
               label="Backlog"
-              href="/priorty/backlog"
+              href="/priority/backlog"
             />
           </>
         )}
