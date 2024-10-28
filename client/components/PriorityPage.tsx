@@ -1,7 +1,12 @@
 "use client";
 
 import Header from "@/components/Header";
-import { Priority, Task, useGetTasksByUserQuery } from "@/lib/api";
+import {
+  Priority,
+  Task,
+  useGetAuthUserQuery,
+  useGetTasksByUserQuery,
+} from "@/lib/api";
 import { useAppSelector } from "@/lib/redux";
 import { dataGridClassNames, dataGridSxStyles } from "@/lib/utils";
 import { DataGrid, GridColDef } from "@mui/x-data-grid";
@@ -71,7 +76,8 @@ const columns: GridColDef[] = [
 const ReusablePriorityPage = ({ priority }: Props) => {
   const [view, setView] = useState("list");
   const [isModalNewTaskOpen, setIsModalNewTaskOpen] = useState(false);
-  const userId = 1;
+  const { data: currentUser } = useGetAuthUserQuery({});
+  const userId = currentUser?.userDetails?.userId ?? null;
   const {
     data: tasks,
     isLoading,

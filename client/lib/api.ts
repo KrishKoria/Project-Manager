@@ -1,4 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import { fetchAuthSession, getCurrentUser } from "aws-amplify/auth";
 
 export interface Projects {
   id: number;
@@ -74,7 +75,17 @@ export interface Team {
 }
 
 export const api = createApi({
-  baseQuery: fetchBaseQuery({ baseUrl: process.env.NEXT_PUBLIC_API_BASE_URL }),
+  baseQuery: fetchBaseQuery({
+    baseUrl: process.env.NEXT_PUBLIC_API_BASE_URL,
+    prepareHeaders: async (headers) => {
+      const session = await fetchAuthSession();
+      const accessToken = session?.tokens ?? {};
+      if (accessToken) {
+        headers.set("Authorization", `Bearer ${accessToken}`);
+      }
+      return headers;
+    },
+  }),
   reducerPath: "api",
   tagTypes: ["Projects", "Tasks", "Users", "Teams"],
   endpoints: (builder) => ({
@@ -132,6 +143,24 @@ export const api = createApi({
       query: () => "users",
       providesTags: ["Users"],
     }),
+    getAuthUser: builder.query({
+      queryFn: async (_, _queryApi, _extraOptions, fetchWithBQ) => {
+        try {
+          const user = await getCurrentUser();
+          const session = await fetchAuthSession();
+          if (!session) {
+            throw new Error("No session found");
+          }
+          const { userSub } = session;
+
+          const usersDetailsResponse = await fetchWithBQ(`users/${userSub}`);
+          const userDetails = usersDetailsResponse.data as User;
+          return { data: { user, userSub, userDetails } };
+        } catch (error: any) {
+          return { error: error.message || "Could not fetch user data" };
+        }
+      },
+    }),
     getTeams: builder.query<Team[], void>({
       query: () => "teams",
       providesTags: ["Teams"],
@@ -149,4 +178,5 @@ export const {
   useGetUsersQuery,
   useGetTeamsQuery,
   useGetTasksByUserQuery,
+  useGetAuthUserQuery,
 } = api;
