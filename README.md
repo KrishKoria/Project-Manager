@@ -67,10 +67,6 @@ Project Manager is a tool designed to help you manage your projects efficiently.
    ```
 5. Open a pull request.
 
-## License
-
-This project is licensed under the MIT License.
-
 ## Contact
 
-For any questions or feedback, please contact [yourname@example.com](mailto:yourname@example.com).
+For any questions or feedback, please contact [Krish Koria](mailto:krishkoria2004@gmail.com).
