@@ -71,7 +71,7 @@ export default function Navbar() {
           <div className="align-center flex h-9 w-9 justify-center">
             {!!currentUserDetails?.profilePictureUrl ? (
               <Image
-                src={`https://pm-s3-bucket-1.s3.ap-south-1.amazonaws.com/${currentUserDetails?.profilePictureUrl}`}
+                src={`https://projectmanager-s3-bucket.s3.eu-north-1.amazonaws.com/${currentUserDetails?.profilePictureUrl}`}
                 alt={currentUserDetails?.username || "User Profile Picture"}
                 width={100}
                 height={50}
